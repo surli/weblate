@@ -1364,11 +1364,9 @@ class XWikiPagePropertiesFormatTest(XMLMixin, PropertiesFormatTest):
         new_language.save()
 
         # Read new content
-        with open(out) as handle:
-            newdata = handle.read()
+        newdata = Path(out).read_text()
 
-        with open(self.FILE) as handle:
-            expected = handle.read()
+        expected = Path(self.FILE).read_text()
 
         self.assertEqual(expected, newdata)
 
